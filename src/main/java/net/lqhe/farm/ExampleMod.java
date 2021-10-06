@@ -1,4 +1,4 @@
-package net.fabricmc.example;
+package net.lqhe.farm;
 
 import net.fabricmc.api.ModInitializer;
 
