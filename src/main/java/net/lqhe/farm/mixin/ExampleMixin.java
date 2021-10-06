@@ -4,10 +4,8 @@ import net.lqhe.farm.util.FarmUtil;
 import net.minecraft.block.CropBlock;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
-import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -33,6 +31,12 @@ public class ExampleMixin {
 				ci.cancel();
 				FarmUtil.areaReplace();
 			}
+		}
+	}
+	@Inject(method = "doItemUse", at = @At(value = "HEAD"))
+	public void onItemUse(CallbackInfo ci){
+		if (this.crosshairTarget.getType() == HitResult.Type.BLOCK) {
+			FarmUtil.singleReplace((BlockHitResult) this.crosshairTarget);
 		}
 	}
 }

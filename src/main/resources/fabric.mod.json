@@ -19,7 +19,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.lqhe.farm.ExampleMod"
+      "net.lqhe.farm.AutoFarm"
     ]
   },
   "mixins": [
